@@ -1,83 +1,70 @@
-👀 Product Vision Document
-This is the template for the Product Vision Document that teams complete after their initial icebreaker. The PVD is crucial to the planning phase and is mandatory for all groups to complete before starting their project.
-☝️ Proposal
+# Getting Started with Create React App
 
-1.What problem does your app solve?
-Putting grandma’s recipes in digital form
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Available Scripts
 
-2.Be as specific as possible; how does your app solve the problem?
-Add new recipes
-Upload old recipes
-Update recipe
-Delete recipes
+In the project directory, you can run:
 
-3. What is the mission statement?
-Saving secret home recipes for a lifetime.
+### `npm start`
 
-💡 Features
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-What features are required for your minimum viable product?
-On-boarding process for a new user
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
+### `npm test`
 
-Ability to enter a new recipe, including title, source (ex: Grandma Ethel), ingredients, instructions, and category (dinner, chicken, dessert, pasta, etc) and edit or delete it later.
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### `npm run build`
 
-Homepage to view all entered recipes.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-Ability to search for recipes by title or tagged categories.
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### `npm run eject`
 
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-2.What features may you wish to put in a future release?
-Upload photos to the recipe
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Learn More
 
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-🛠 Frameworks - Libraries
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-What 3rd party frameworks/libraries are you considering using?
-Express
-Node
-AdobeXD
-React/
-Knex
+### Code Splitting
 
-Do the APIs you need require you to contact them to gain access?
-no
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-Are you required to pay to use said API(s)?
-no
+### Analyzing the Bundle Size
 
-🧮 For Data Scientists
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-Describe the established data source with at least rough data able to be provided on day one.
+### Making a Progressive Web App
 
-Write a description for what the data science problem is. What uncertainty or prediction are you trying to discover? How could this data be used to find a solution to this problem?
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-🎯 Target Audience
+### Advanced Configuration
 
-Who is your target audience? Be specific.
-Family members
-Anyone who wants to cook new recipes
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-What feedback have you gotten from potential users?
+### Deployment
 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
+### `npm run build` fails to minify
 
-Have you validated this problem and your solution with a target audience? Describe how.
-Not yet
-
-
-🔑 Prototype Key Feature(s)
-
-How long do you think it will take to implement these features?
-2 weeks 
-
-Do you anticipate working on stretch functionality after completion of a Minimal Viable Product?
-Maybe maybe not 
-
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
