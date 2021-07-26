@@ -6,13 +6,11 @@ const {restrict} = require("./auth-middleware")
 
  
 
-router.get("/users",restrict, async (req, res, next) => {
+router.get ("/users", async function(req, res, next){
     try {
-        res.json(await model.find())
-    }
+        res.json( model.find())    }
     catch (err) {
-        next(err)
-    }
+         next(err)     }
 })
 router.post("/login", async (req, res, next) => {
     try {

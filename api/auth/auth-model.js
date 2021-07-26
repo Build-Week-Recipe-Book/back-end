@@ -13,13 +13,13 @@ async function find() {
 
 async function addRecipe(recipe,id){
     const data = {recipe_id:id,...recipe}
-    const [id] = await db("addRecipe").insert(data).returning("recipe_id")
+    const recipeId = await db("addRecipe").insert(data).returning("recipe_id")
     console.log("Recipe_id",id)
-    return findById(id)
+    return findById(recipeId)
 }
 
 async function addUsers(data) {
-    const [id] = await db("users").insert(data).returning("ID")
+    const id = await db("users").insert(data).returning("ID")
     console.log("ID", id)
     return findByUserId(id)
 
@@ -41,7 +41,7 @@ async function findById(id) {
 }
 
 
-const updateRecipe = (id,data) =>{
+async function updateRecipe (id,data) {
     //EDIT AND UPDATE OLD RECIPE
     console.log("updateRecipe",id)
     await db("addRecipe").where("recipe_id",id)
