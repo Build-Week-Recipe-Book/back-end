@@ -1,29 +1,25 @@
 const express = require('express');
-
-const recipeRouter = require('./recipe/recipe-router');
-
-const db = require ('../data/db-config');
-
+const cors = require('cors');
+const helmet = require("helmet")
+const recipeRouter = require('./auth/auth-router');
+const cookieParser = require('cookie-parser');
 const server = express();
-
+const PORT = process.env.PORT || 3000;
 //MIDDLEWARE
-
+server.use(cookieParser());
+server.use(helmet());
+server.use(cors())
 server.use(express.json());
-server.use('./api/recipe',recipeRouter);
+server.use(recipeRouter);
 
 
-// import the router into the server
 
 server.get('/',(req,res,next)=>{
-    return 
-    res.send('<h1>I AM THE SERVER</h1>');
-});
+    res.send("Welcome to Grandma's Recipe Book")
+})
 
-server.use((err,req,res,next)=>{
-    console.log(err)
-    return res.status(500).json({message:'Something went wrong'})
-});
 
+ 
 
 
 
