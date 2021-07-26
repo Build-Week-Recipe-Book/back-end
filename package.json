@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/Build-Week-Recipe-Book/back-end#readme",
   "devDependencies": {
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "helmet": "^4.6.0",
     "sqlite3": "^5.0.2"
   },
   "dependencies": {

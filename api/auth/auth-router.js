@@ -4,11 +4,11 @@
  
 
 
- const Recipe = require('./recipe-model');
+ const Recipe = require('./auth-model');
 
  const middleware = require('../middleware');
 
- router.get('/', async(req,res,next)=>{
+ router.get('/recipe', async(req,res,next)=>{
     Recipe.getAll()
     .then(recipes => {
         res.status(200).json(recipes);
