@@ -35,7 +35,7 @@ async function findByUserId(id) {
 async function findById(id) {
     console.log("addRecipe id", id)
     return await db("addRecipe")
-        .select("recipe_Id", "recipeName",  "ingredients", "description", "userId")
+        .select("recipe_Id", "recipeName",  "ingredients", "instructions", "userId")
         .where("recipe_id", id)
         .first()
 }
@@ -65,6 +65,7 @@ module.exports = {
     findById,
     findByUserId,
     addRecipe,
+    addUsers,
     deleteRecipe,
     updateRecipe
 }
