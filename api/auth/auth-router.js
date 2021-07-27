@@ -7,15 +7,36 @@ const {restrict} = require("./auth-middleware")
  
 
 router.get ("/users", async function(req, res, next){
+
+    const users = [
+        {
+            id:1,
+            first_name:'User1',
+            last_name:'User',
+            email:'user124@gmail.com'    },
+            {
+                id:2,
+            first_name:'User2',
+            last_name:'User',
+            email:'user124@gmail.com'  
+            },
+            {
+                id:3,
+            first_name:'User3',
+            last_name:'User',
+            email:'user124@gmail.com'  
+            }
+    ]
     try {
-        res.json( model.find())    }
+        //res.json( model.find()) 
+        res.send(users)   }
     catch (err) {
          next(err)     }
 })
 router.post("/login", async (req, res, next) => {
     try {
         const { emailId, password } = req.body
-        const user = await model.findByEmailId(emailId)
+        const user = await model.findByUserId(emailId)
         console.log(user.password, "===", password)
         if (!user) {
             return res.status(401).json({
@@ -50,7 +71,7 @@ router.post("/register", async (req, res, next) => {
     try {
         const { firstName, lastName, emailId, password, userType } = req.body
         console.log("emailId", emailId)
-        const users = await model.findByEmailId(emailId)
+        const users = await model.findByUserId(emailId)
         console.log("users router", users)// When i get [] its working 
 
         if (users) {
@@ -75,6 +96,18 @@ router.post("/register", async (req, res, next) => {
     catch (err) {
         next(err)
     }
+})
+router.get ("/recipes",(req, res, next)=>{
+    const recipe = req.body;
+    res.status(200).send(model.find(recipe))
+})
+
+ 
+
+router.get('/recipes/:id', (req,res,next)=>{
+    const id =req.params.id;
+    res.status(201).send(model.findById(id))
+
 })
 
  router.post('/:id/addRecipe', async(req,res,next)=>{

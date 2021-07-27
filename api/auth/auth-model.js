@@ -11,11 +11,11 @@ async function find() {
 
 }
 
-async function addRecipe(recipe,id){
+async function addRecipe(id,recipe){
     const data = {recipe_id:id,...recipe}
-    const recipeId = await db("addRecipe").insert(data).returning("recipe_id")
-    console.log("Recipe_id",id)
-    return findById(recipeId)
+    const newRecipe = await db("recipe").insert(data).returning("newRecipe")
+    console.log("newRecipe",id)
+    return newRecipe
 }
 
 async function addUsers(data) {
