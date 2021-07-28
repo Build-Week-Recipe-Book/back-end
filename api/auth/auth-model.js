@@ -3,10 +3,10 @@ const db = require('../../data/db-config');
 
 
 
-async function find() {
+ function find() {
     //GET ALL RECIPES
     
-    return await db("recipes as r").select("r.ID", "r.title")
+    return  db("recipes").select("*")
 
 
 }

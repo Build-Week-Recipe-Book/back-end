@@ -4,13 +4,13 @@ const helmet = require("helmet")
 const recipeRouter = require('./auth/auth-router');
 const cookieParser = require('cookie-parser');
 const server = express();
-const PORT = process.env.PORT || 3000;
+
 //MIDDLEWARE
 server.use(cookieParser());
 server.use(helmet());
 server.use(cors())
 server.use(express.json());
-server.use(recipeRouter);
+server.use("/recipes",recipeRouter);
 
 
 
