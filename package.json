@@ -1,6 +1,9 @@
 {
   "name": "back-end",
   "version": "1.0.0",
+  "engines": {
+    "node":"14.5.0"
+  },
   "description": "👀 Product Vision Document\r This is the template for the Product Vision Document that teams complete after their initial icebreaker. The PVD is crucial to the planning phase and is mandatory for all groups to complete before starting their project.\r ☝️ Proposal",
   "main": "index.js",
   "scripts": {
