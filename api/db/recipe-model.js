@@ -32,12 +32,11 @@ function addRecipe(id,title){
         .first()
 }
 
- function findById(id) {
-   // console.log("addRecipe id", id)
-    return  db("addRecipe")
-        .select("id", "title",  "ingredients", "instructions", "userId")
-        .where("id", id)
-        .first()
+ function findById() {
+   
+    return  db("recipes").select("id","title","source")
+        
+        
 }
 
 
