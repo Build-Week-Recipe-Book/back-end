@@ -6,7 +6,7 @@ const {restrict} = require("./auth-middleware")
 
  
 
-router.get ("/users", async function(req, res, next){
+router.get ("/users",  function(req, res, next){
 
     const users = [
         {
@@ -28,7 +28,7 @@ router.get ("/users", async function(req, res, next){
             }
     ]
     try {
-        //res.json( model.find()) 
+    
         res.send(users)   }
     catch (err) {
          next(err)     }
@@ -81,7 +81,7 @@ router.post("/register", async (req, res, next) => {
         }
         else {
 
-            const newUser = await model.addUsers({
+            const newUser = await Recipe.addUsers({
                 firstName,
                 lastName,
                 emailId,
@@ -97,22 +97,21 @@ router.post("/register", async (req, res, next) => {
         next(err)
     }
 })
-router.get ("/",(req, res, next)=>{
-    const recipes = Recipe.find()
-    //console.log('recipes',recipes)
+router.get ("/",async(req, res, next)=>{
+    const recipes = await Recipe.find()
+    
     res.status(200).json({
         message:'SUCCESS',
         recipes
-        
     })
-    //res.status(200).send(model.find(recipe))
+    
 })
 
  
 
 router.get('/:id', (req,res,next)=>{
     const id =req.params.id;
-    res.status(201).send(model.findById(id))
+    res.status(201).send(Recipe.id)
 
 })
 
@@ -120,7 +119,7 @@ router.get('/:id', (req,res,next)=>{
     try {
         const { recipeName,ingredient,instructions} = req.body
         const id = req.params.id
-        const newRecipe = await model.addRecipe(req.body, id)
+        const newRecipe = await Recipe.addRecipe(req.body, id)
         console.log("New user", newRecipe)
         res.status(201).json(newRecipe)
 
@@ -134,7 +133,7 @@ router.get('/:id', (req,res,next)=>{
     try {
         const { recipeName,ingredients, instructions } = req.body
         const id = req.params.id
-        const idCheck = await model.findById(id)
+        const idCheck = await Recipe.findById(id)
         console.log("recipe", idCheck)
         if (!idCheck) {
             res.status(409).json({
@@ -143,7 +142,7 @@ router.get('/:id', (req,res,next)=>{
             })
 
         }
-        const editRecipe = await model.updateRecipe(req.body, id)
+        const editRecipe = await Recipe.updateRecipe(req.body, id)
         console.log("Edit", editRecipe)
         res.status(200).json(editRecipe)
     }
@@ -155,7 +154,7 @@ router.get('/:id', (req,res,next)=>{
 
 router.delete("/:id", async (req, res, next) => {
     const id = req.params.id
-    const deleted = await model.deleteRecipe(id)
+    const deleted = await Recipe.deleteRecipe(id)
     try {
         if (deleted) {
             res.status(200).json({

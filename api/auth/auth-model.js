@@ -11,50 +11,50 @@ const db = require('../../data/db-config');
 
 }
 
-async function addRecipe(id,recipe){
-    const data = {recipe_id:id,...recipe}
-    const newRecipe = await db("recipe").insert(data).returning("newRecipe")
-    console.log("newRecipe",id)
+function addRecipe(id,title){
+    const data = {recipe_id:id,...title}
+    const newRecipe =db("recipe").insert(data)
+   // console.log("newRecipe",id)
     return newRecipe
 }
 
-async function addUsers(data) {
-    const id = await db("users").insert(data).returning("ID")
+ function addUsers(data) {
+    const id = db("users").insert(data).returning("ID")
     console.log("ID", id)
     return findByUserId(id)
 
 }
-async function findByUserId(id) {
+ function findByUserId(id) {
     console.log("findUserBy", id)
-    return await db("users")
-        .select("ID", "firstName", "lastName", "emailId", "password", "userType")
+    return  db("users")
+        .select("ID", "username", "password","email")
         .where("ID", id)
         .first()
 }
 
-async function findById(id) {
-    console.log("addRecipe id", id)
-    return await db("addRecipe")
-        .select("recipe_Id", "recipeName",  "ingredients", "instructions", "userId")
-        .where("recipe_id", id)
+ function findById(id) {
+   // console.log("addRecipe id", id)
+    return  db("addRecipe")
+        .select("id", "title",  "ingredients", "instructions", "userId")
+        .where("id", id)
         .first()
 }
 
 
-async function updateRecipe (id,data) {
+ function updateRecipe (id,data) {
     //EDIT AND UPDATE OLD RECIPE
-    console.log("updateRecipe",id)
-    await db("addRecipe").where("recipe_id",id)
+   // console.log("updateRecipe",id)
+     db("addRecipe").where("id",id)
     .update(data)
     return findById(id)
 
 }
 
-async function deleteRecipe(id){
+ function deleteRecipe(id){
     // DELETE RECIPE BY  ID
     console.log("updateRecipe",id)
-    await db("addRecipe")
-    .where("recipe_id",id)
+     db("addRecipe")
+    .where("id",id)
     .del()
     
 
