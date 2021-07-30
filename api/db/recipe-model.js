@@ -1,7 +1,7 @@
 
 const db = require('../../data/db-config');
 
-
+//RECIPES
 
  function find() {
     //GET ALL RECIPES
@@ -12,25 +12,12 @@ const db = require('../../data/db-config');
 }
 
  async function addRecipe(data){
-    console.log(data)
+    //console.log(data)
     const newRecipe = await db("recipes").insert(data)
     
     return newRecipe
 }
 
- function addUsers(data) {
-    const id = db("users").insert(data).returning("id")
-    console.log("id", id)
-    return findByUserId(id)
-
-}
- function findByUserId(id) {
-    console.log("findUserBy", id)
-    return  db("users")
-        .select("id", "username", "password","email")
-        .where("id", id)
-        .first()
-}
 
  function findById(id) {
    
@@ -40,28 +27,47 @@ const db = require('../../data/db-config');
 }
 
 
- function updateRecipe (id,data) {
+   function updateRecipe (id,data) {
     //EDIT AND UPDATE OLD RECIPE
-   // console.log("updateRecipe",id)
-     db("addRecipe").where("id",id)
+    
+     return  db("recipes")
+    .where("id",id)
     .update(data)
-    return findById(id)
+    
+    
+
+    
+
+
 
 }
 
  function deleteRecipe(id){
     // DELETE RECIPE BY  ID
-    console.log("updateRecipe",id)
-     db("addRecipe")
-    .where("id",id)
-    .del()
+return db("recipes")
+    .where("id",id = false)
+    .del(['title','source'])
     
 
 }
+//USERS
 
+function findUser() {
+    return db('users').select('id', 'username', 'password');
+}
+async function addUsers(data) {
+    const newUser = await db("users").insert(data)
+    return newUser
+
+}
+ function findByUserId(id) {
+    return  db("user").select("username","password")
+    .where("id",id)
+}
 module.exports = {
     find,
     findById,
+    findUser,
     findByUserId,
     addRecipe,
     addUsers,

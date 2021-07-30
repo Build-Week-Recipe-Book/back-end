@@ -1,35 +1,19 @@
 const router = require('express').Router();
+const User = require('../db/recipe-model');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const {restrict} = require("../auth/auth-middleware");
 
-const users = [
-    {
-        id:1,
-        first_name:'User1',
-        last_name:'User',
-        email:'user124@gmail.com'    },
-        {
-            id:2,
-        first_name:'User2',
-        last_name:'User',
-        email:'user124@gmail.com'  
-        },
-        {
-            id:3,
-        first_name:'User3',
-        last_name:'User',
-        email:'user124@gmail.com'  
-        }
-]
-try {
+router.get('api/users',async(req,res)=>{
+    const users = await User.findUser()
+    
+    res.status(200).json({
+        message:'SUCCESS',
+        users
+    })
+})
 
-    res.send(users)   }
-catch (err) {
-     next(err)    
-     }
-
-router.post("/login", async (req, res, next) => {
+router.post("api/login", async (req, res, next) => {
 try {
     const { emailId, password } = req.body
     const user = await model.findByUserId(emailId)
@@ -77,7 +61,7 @@ try {
     }
     else {
 
-        const newUser = await Recipe.addUsers({
+        const newUser = await User.addUsers({
             firstName,
             lastName,
             emailId,
