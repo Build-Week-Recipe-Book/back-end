@@ -11,31 +11,31 @@ const db = require('../../data/db-config');
 
 }
 
-function addRecipe(id,title){
-    const data = {recipe_id:id,...title}
-    const newRecipe =db("recipe").insert(data)
-   // console.log("newRecipe",id)
+ async function addRecipe(data){
+    console.log(data)
+    const newRecipe = await db("recipes").insert(data)
+    
     return newRecipe
 }
 
  function addUsers(data) {
-    const id = db("users").insert(data).returning("ID")
-    console.log("ID", id)
+    const id = db("users").insert(data).returning("id")
+    console.log("id", id)
     return findByUserId(id)
 
 }
  function findByUserId(id) {
     console.log("findUserBy", id)
     return  db("users")
-        .select("ID", "username", "password","email")
-        .where("ID", id)
+        .select("id", "username", "password","email")
+        .where("id", id)
         .first()
 }
 
- function findById() {
+ function findById(id) {
    
     return  db("recipes").select("id","title","source")
-        
+        .where("id",id)
         
 }
 

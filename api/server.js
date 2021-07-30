@@ -5,13 +5,13 @@ const recipeRouter = require('./db/recipe_router');
 const cookieParser = require('cookie-parser');
 const server = express();
 
+
 //MIDDLEWARE
 server.use(cookieParser());
 server.use(helmet());
 server.use(cors())
 server.use(express.json());
 server.use("/recipes",recipeRouter);
-
 
 
 server.get('/',(req,res,next)=>{

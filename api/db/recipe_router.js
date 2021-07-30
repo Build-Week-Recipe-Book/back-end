@@ -2,6 +2,8 @@ const router = require('express').Router();
 const Recipe = require('./recipe-model');
 
 
+
+
 router.get ("/",async(req, res, next)=>{
     const recipes = await Recipe.find()
     
@@ -15,27 +17,21 @@ router.get ("/",async(req, res, next)=>{
  
 
 router.get('/:id',async (req,res,next)=>{
-  // const id =  req.params.id;
+   //const id =  req.params.id;
   const recipe =  await Recipe.findById(req.params.id)
   
-  res.status(201).json(recipe)
+  res.status(200).send(recipe)
      })
 
    
+ router.post('/',(req,res)=>{
+     //const recipe =  Recipe.find()
+     const newRecipe = req.body;
+     //console.log(newRecipe);
+     Recipe.addRecipe(newRecipe)
+     res.status(201).send("Created recipe")
+     
 
-
- router.post('/:id/addRecipe', async(req,res,next)=>{
-    try {
-        const { recipeName,ingredient,instructions} = req.body
-        const id = req.params.id
-        const newRecipe = await Recipe.addRecipe(req.body, id)
-        console.log("New user", newRecipe)
-        res.status(201).json(newRecipe)
-
-    }
-    catch (err) {
-        next(err)
-    }
  })
 
  router.put("/:id/editPotluck", async (req, res, next) => {
