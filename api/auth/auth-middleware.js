@@ -1,4 +1,4 @@
-const Recipe = require('./auth-model')
+const Recipe = require('../db/recipe-model')
 
 exports.checkRecipePayload = (req,res,next) =>{
     
