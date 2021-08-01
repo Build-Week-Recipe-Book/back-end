@@ -37,8 +37,8 @@ router.get('/:id',async (req,res,next)=>{
  })
 
  router.put("/:id/editRecipe",  async(req, res, next) => {
-    // const updatedRecipe = req.body
-     await Recipe.updateRecipe;
+     const changes = req.body
+     await Recipe.updateRecipe(changes);
      res.status(200).send("Updated recipe")
     
 })

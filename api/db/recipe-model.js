@@ -27,13 +27,12 @@ const db = require('../../data/db-config');
 }
 
 
-   function updateRecipe (id,data) {
+   async function updateRecipe (id,data) {
     //EDIT AND UPDATE OLD RECIPE
     
-     return  db("recipes")
-    .where("id",id)
-    .update(data)
+    const count = await db('posts').where({id}).update(data);
     
+    return count;
     
 
     
