@@ -29,8 +29,8 @@ const db = require('../../data/db-config');
 
    async function updateRecipe (id,data) {
     //EDIT AND UPDATE OLD RECIPE
-    
-    const count = await db('posts').where({id}).update(data);
+    console.log(data)
+    const count = await db('posts').where(id).update(data);
     
     return count;
     

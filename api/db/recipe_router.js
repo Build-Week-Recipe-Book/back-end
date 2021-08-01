@@ -38,7 +38,8 @@ router.get('/:id',async (req,res,next)=>{
 
  router.put("/:id/editRecipe",  async(req, res, next) => {
      const changes = req.body
-     await Recipe.updateRecipe(changes);
+     console.log(changes)
+     await Recipe.updateRecipe({changes});
      res.status(200).send("Updated recipe")
     
 })
@@ -46,7 +47,7 @@ router.get('/:id',async (req,res,next)=>{
 
 router.delete("/:id", (req, res, next) => {
     const deleted = Recipe.deleteRecipe(req.params.id)
-   // Recipe.deleteRecipe(deleted)
+    Recipe.deleteRecipe(deleted)
     console.log(deleted)
     res.status(200).send('Deleted recipe')
 
