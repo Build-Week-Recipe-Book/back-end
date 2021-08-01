@@ -45,7 +45,7 @@ const db = require('../../data/db-config');
     // DELETE RECIPE BY  ID
 return db("recipes")
     .where("id",id = false)
-    .del(['title','source'])
+    .del(id)
     
 
 }
