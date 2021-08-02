@@ -27,10 +27,13 @@ const db = require('../../data/db-config');
 }
 
 
-   async function updateRecipe (id,data) {
+    async function updateRecipe (data,id) {
     //EDIT AND UPDATE OLD RECIPE
-    console.log(data)
-    const count = await db('posts').where(id).update(data);
+    console.log(id)
+    console.log('data',data)
+    let count = await db('recipes')
+    .where({id})
+    .update(data);
     
     return count;
     
@@ -44,7 +47,7 @@ const db = require('../../data/db-config');
  function deleteRecipe(id){
     // DELETE RECIPE BY  ID
 return db("recipes")
-    .where("id",id = false)
+    .where("id",id )
     .del(id)
     
 

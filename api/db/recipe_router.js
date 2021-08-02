@@ -38,8 +38,8 @@ router.get('/:id',async (req,res,next)=>{
 
  router.put("/:id/editRecipe",  async(req, res, next) => {
      const changes = req.body
-     console.log(changes)
-     await Recipe.updateRecipe({changes});
+     console.log('changes',changes)
+     await Recipe.updateRecipe(changes);
      res.status(200).send("Updated recipe")
     
 })
